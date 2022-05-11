@@ -1,3 +1,18 @@
 // Place all the styles related to the api/slot controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.css-2r3irp-MuiCardContent-root:last-child {
+	padding-bottom: unset !important;
+	text-align: center;
+}
+
+.css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
+	color: black !important;
+}
+
+.css-480o17-MuiGrid-root {
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}

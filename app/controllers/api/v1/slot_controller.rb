@@ -4,6 +4,7 @@ class Api::V1::SlotController < ApplicationController
       if available_slot.present?
         slots = AvailableSlot.compile_time_slots(available_slot.start, 
                     available_slot.end)
+
          render json: slots, status: :ok
       else
         slots = Slot.compile_time_slots(params[:date])
@@ -13,11 +14,10 @@ class Api::V1::SlotController < ApplicationController
   end
 
   def create
-
+    binding.pry
   end
 
   def show
-
   end
 
   private

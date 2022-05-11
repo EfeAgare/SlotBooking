@@ -22,7 +22,7 @@ class Slot < ApplicationRecord
       
       if Time.parse(date).to_time  > Time.zone.now
         ## cater for booking at 12am - 8am
-        start_time = Time.parse('8:05')
+        start_time = Time.parse('8:00')
       else
         start_time = (TIME_NOW + 15.minute).to_time
       end
@@ -30,6 +30,7 @@ class Slot < ApplicationRecord
       finish_time = Time.parse('17:00')
 
       slots = total_slots(start_time, finish_time)
+      slots.present? ? slots : ["No availale slot for this date picked"]
     end
   end
 end
