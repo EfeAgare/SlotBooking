@@ -11,7 +11,7 @@ import {
 import DateInput from "./common/DateInput";
 import Divider from "@mui/material/Divider";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAvailableSlots } from "../redux/actions";
+import { createSlot, fetchAvailableSlots } from "../redux/actions";
 
 const Home = () => {
 	const [duration, setDuration] = useState("");
@@ -27,13 +27,23 @@ const Home = () => {
 		}
 	};
 
-	const handleSubmit = () => {
+	const fetchSlots = () => {
 		const data = {
 			date: date,
 			duration: duration,
 		};
 
 		dispatch(fetchAvailableSlots(data));
+	};
+
+	const handleSubmit = (slot) => {
+		const data = {
+			date: date,
+			duration: duration,
+			slot: slot,
+		};
+
+		dispatch(createSlot(data));
 	};
 
 	return (
@@ -83,7 +93,7 @@ const Home = () => {
 							variant="outlined"
 							size="small"
 							type="submit"
-							onClick={handleSubmit}
+							onClick={fetchSlots}
 							disabled={!!date && !!duration ? false : true}
 						>
 							Show available slots
@@ -102,7 +112,19 @@ const Home = () => {
 					{!slots.isLoading && slots.slots.length > 0
 						? slots.slots.map((slot) => (
 								<Grid item key={slot}>
-									<Button variant="outlined">{slot}</Button>
+									<Button variant="outlined" onClick={() => handleSubmit(slot)}>
+										{slot}
+									</Button>
+								</Grid>
+						  ))
+						: null}
+				</Grid>
+
+				<Grid container spacing={4}>
+					{!slots.isLoading && Object.keys(slots.slot).length !== 0
+						? slots.slot.time_range.map((slot) => (
+								<Grid item key={slot}>
+									<Typography>{slot} Booked</Typography>
 								</Grid>
 						  ))
 						: null}

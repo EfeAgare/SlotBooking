@@ -1,5 +1,6 @@
 import {
 	ADD_SLOT,
+	CREATE_SLOTS_LOADING,
 	FETCH_AVAILABLE_SLOTS,
 	FETCH_AVAILABLE_SLOTS_LOADING,
 } from "../actionTypes";
@@ -7,16 +8,18 @@ import {
 const initialState = {
 	slots: [],
 	isLoading: false,
+	slot: {},
 	error: false,
 };
 
 export default function (state = initialState, action) {
 	switch (action.type) {
 		case ADD_SLOT: {
-			return { ...state, isLoading: false, slots: action.payload };
+			return { ...state, isLoading: false, slot: action.payload, slots: [] };
 		}
 
 		case FETCH_AVAILABLE_SLOTS_LOADING:
+		case CREATE_SLOTS_LOADING:
 			return {
 				...state,
 				isLoading: true,
@@ -26,6 +29,7 @@ export default function (state = initialState, action) {
 			return {
 				...state,
 				slots: action.payload,
+				slot: {},
 				isLoading: false,
 			};
 		}
