@@ -1,4 +1,7 @@
 # Slot booking
+
+<img width="1432" alt="Screenshot 2022-05-13 at 09 42 43" src="https://user-images.githubusercontent.com/39013780/168246076-f980cdaa-280c-4196-b033-b444df8cea00.png">
+
  A system through which shipping companies can book a time slot to load or unload goods at a warehouse. Specifically, given a day and the duration for the new slot to be booked, the system gives a list of times that are available for booking. Users can then pick one suggestion from the list and book a slot at this time.
 
 ### Task Done
