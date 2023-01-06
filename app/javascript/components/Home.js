@@ -111,22 +111,24 @@ const Home = () => {
 				<Grid container spacing={4}>
 					{!slots.isLoading && slots.slots.length > 0
 						? slots.slots.map((slot) => (
-								<Grid item key={slot}>
-									<Button variant="outlined" onClick={() => handleSubmit(slot)}>
-										{slot}
-									</Button>
-								</Grid>
-						  ))
+							<Grid item key={slot}>
+								<Button variant="outlined" onClick={() => handleSubmit(slot)}>
+									{slot[0]}
+								</Button>
+							</Grid>
+						))
 						: null}
 				</Grid>
 
 				<Grid container spacing={4}>
 					{!slots.isLoading && Object.keys(slots.slot).length !== 0
-						? slots.slot.time_range.map((slot) => (
-								<Grid item key={slot}>
-									<Typography>{slot} Booked</Typography>
-								</Grid>
-						  ))
+						? slots.slot.length !== 1 ?
+							<Grid item >
+								<Typography>{slots.slot[0]} - </Typography> <Typography> {slots.slot[1]} Booked</Typography>
+							</Grid>
+							: <Grid item>
+								<Typography>{slots.slot}</Typography>
+							</Grid>
 						: null}
 				</Grid>
 			</Container>

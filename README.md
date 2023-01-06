@@ -49,7 +49,7 @@
 ## Test 
 To run all test
 ```
-rspec 
+bundle exec rspec 
 ```
 
 and to run a specific test 
