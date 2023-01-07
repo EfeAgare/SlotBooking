@@ -22,7 +22,7 @@ export const fetchAvailableSlots = (data) => async (dispatch) => {
 	dispatch({ type: FETCH_AVAILABLE_SLOTS_LOADING });
 
 	try {
-		const response = await baseApi.get("/slot", {
+		const response = await baseApi.get("/new_slot", {
 			params: data,
 		});
 
@@ -36,7 +36,7 @@ export const createSlot = (data) => async (dispatch) => {
 	dispatch({ type: CREATE_SLOTS_LOADING });
 
 	try {
-		const response = await baseApi.post("/slot", data);
+		const response = await baseApi.post("/new_slot", data);
 
 		return dispatch(addSlot(response.data));
 	} catch ({ response }) {

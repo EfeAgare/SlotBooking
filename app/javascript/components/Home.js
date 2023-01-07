@@ -40,7 +40,7 @@ const Home = () => {
 		const data = {
 			date: date,
 			duration: duration,
-			slot: slot,
+			slot: slot[0],
 		};
 
 		dispatch(createSlot(data));
